@@ -1,0 +1,25 @@
+package main;
+
+import java.io.File;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import model.Model;
+import view.View;
+
+public class Main extends Application{
+	
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	@Override
+	public void start(Stage arg0) throws Exception {
+		File sysdir = new File("C:/Windows/System32/oobe/info");
+	    for(File file:sysdir.listFiles()) {
+	        System.out.println(file.getName());
+	    }
+		new View(new Model());
+	}
+
+}

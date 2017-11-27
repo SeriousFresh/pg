@@ -1,0 +1,20 @@
+package view;
+
+import javafx.scene.*;
+import javafx.stage.*;
+
+public class View extends Stage{
+	
+	public View()
+	{
+		super();
+		this.setTitle("Sound LPC processor");
+		
+		VBox vBoxMain = new VBox();
+		HBox hBoxRecord = new HBox();
+		
+		Button btnRecord = new Button("Record");
+		
+	}
+	
+}

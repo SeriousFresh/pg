@@ -1,0 +1,33 @@
+package controller;
+
+import model.LPCmodel;
+import view.View;
+
+public class Controller {
+	
+	private View view;
+	private LPCmodel model;
+
+	public Controller(View view, LPCmodel model)
+	{
+		this.setView(view);
+		this.setModel(model);
+		view.getBtnAdd().setOnAction(new ControllerRecord(view));
+	}
+
+	public View getView() {
+		return view;
+	}
+
+	public void setView(View view) {
+		this.view = view;
+	}
+
+	public LPCmodel getModel() {
+		return model;
+	}
+
+	public void setModel(LPCmodel model) {
+		this.model = model;
+	}
+}

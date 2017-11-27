@@ -1,0 +1,72 @@
+package controller;
+
+import java.util.Optional;
+
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextInputDialog;
+import view.View;
+
+public class ControllerRecord implements EventHandler<ActionEvent>
+{
+
+	public View view;
+	
+	public ControllerRecord(View view) {
+		super();
+		this.view = view;
+	}
+
+	@Override
+	public void handle(ActionEvent event) {
+		
+		String string = "Record in ";
+		int number = view.getCbSounds().getChildrenUnmodifiable().size() + 1;
+		
+		Task<Void> task = new Task<Void>()
+		{
+			public Void call()
+			{
+				long timeStart = System.currentTimeMillis();
+				long timeCurrent = System.currentTimeMillis();
+				long timeDelta = timeCurrent - timeStart;
+				
+				while(timeDelta <= 3000)
+				{
+					int timeSeconds = (int) (timeDelta / 1000);
+					System.out.println(timeSeconds);
+					updateMessage(string + (3 - timeSeconds) + " ...");
+
+					timeCurrent = System.currentTimeMillis();
+					timeDelta = timeCurrent - timeStart;
+				}
+				
+				timeStart = System.currentTimeMillis();
+				timeCurrent = System.currentTimeMillis();
+				timeDelta = timeCurrent - timeStart;
+				while(timeDelta <= 3000)
+				{
+					int timeSeconds = (int) (timeDelta / 1000);
+					System.out.println(timeSeconds);
+					updateMessage("Recording(" + (3 - timeSeconds) + ")...");
+
+					timeCurrent = System.currentTimeMillis();
+					timeDelta = timeCurrent - timeStart;
+				}
+				
+				updateMessage("Not recording");
+				return null;		
+			}	
+		};
+		task.messageProperty().addListener((obs, oldMessage, newMessage) -> view.getLblRecord().setText(newMessage));
+        new Thread(task).start();
+		
+		//dialog.setHeaderText(string);
+		
+		
+	}
+
+}

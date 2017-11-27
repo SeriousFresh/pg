@@ -1,0 +1,48 @@
+package model;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Model {
+	
+	private ArrayList<String> soundPaths;
+
+	public Model()
+	{
+		super();
+		soundPaths = new ArrayList<String>();
+		File dir = new File("/sounds/");
+		/*
+		File[] files = dir.listFiles(new FilenameFilter()
+		{
+		  public boolean accept(File dir, String name)
+		  {
+		    //return name.startsWith("temp") && name.endsWith(".wav");
+			 return name.endsWith(".wav");
+		  }
+		});*/
+		
+		File[] files = dir.listFiles();
+		ArrayList f = new ArrayList<>(Arrays.asList(files));
+		
+		for(int j = 0; j < f.size(); j++)
+		{
+			System.out.println(2);
+			String name = files[j].getName().substring(0, files[j].getName().lastIndexOf("."));
+			this.soundPaths.add(name);
+		}
+	}
+	
+	public ArrayList<String> getSoundPaths() {
+		return soundPaths;
+	}
+
+	public void setSoundPaths(ArrayList<String> soundPaths) {
+		this.soundPaths = soundPaths;
+	}
+	
+	
+	
+}

@@ -1,0 +1,22 @@
+package controller;
+
+import view.View;
+
+public class Controller {
+	
+	private View view;
+
+	public Controller(View view)
+	{
+		this.setView(view);
+		view.getBtnAdd().setOnAction(new ControllerRecord(view));
+	}
+
+	public View getView() {
+		return view;
+	}
+
+	public void setView(View view) {
+		this.view = view;
+	}
+}
