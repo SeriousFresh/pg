@@ -40,27 +40,12 @@ public class ControllerRecord implements EventHandler<ActionEvent>
 					updateMessage(string + (3 - timeSeconds) + " ...");
 					
 					//pointing
-					/*
 					if(timeDelta == 1000)
-						recorder.start();*/
+						recorder.start();
 
 					timeCurrent = System.currentTimeMillis();
 					timeDelta = timeCurrent - timeStart;
 				}
-				
-				Thread stopper = new Thread(new Runnable() {
-		            public void run() {
-		                try {
-		                    Thread.sleep(RECORD_TIME);
-		                } catch (InterruptedException ex) {
-		                    ex.printStackTrace();
-		                }
-		                recorder.finish();
-		            }
-		        });
-				
-				stopper.start();
-			    recorder.start();
 				
 				while(timeDelta <= 6000)
 				{
@@ -71,7 +56,7 @@ public class ControllerRecord implements EventHandler<ActionEvent>
 					timeDelta = timeCurrent - timeStart;
 				}
 				updateMessage("");
-				//recorder.finish();
+				recorder.finish();
 				NUMBER++;
 				return null;		
 			}	
