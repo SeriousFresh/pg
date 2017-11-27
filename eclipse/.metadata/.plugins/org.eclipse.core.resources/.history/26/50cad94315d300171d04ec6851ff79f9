@@ -47,17 +47,22 @@ public class ControllerRecord implements EventHandler<ActionEvent>
 					timeDelta = timeCurrent - timeStart;
 				}
 				
-				while(timeDelta <= 6000)
+				timeStart = System.currentTimeMillis();
+				timeCurrent = System.currentTimeMillis();
+				timeDelta = timeCurrent - timeStart;
+				
+				
+				while(timeDelta <= 3000)
 				{
 					int timeSeconds = (int) (timeDelta / 1000);
-					updateMessage("Recording(" + (6 - timeSeconds) + ")...");
+					updateMessage("Recording(" + (3 - timeSeconds) + ")...");
 
-					timeCurrent = System.currentTimeMillis();
+			        timeCurrent = System.currentTimeMillis();
 					timeDelta = timeCurrent - timeStart;
 				}
-				updateMessage("");
 				recorder.finish();
 				NUMBER++;
+				updateMessage("");
 				return null;		
 			}	
 		};

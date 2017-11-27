@@ -33,31 +33,35 @@ public class ControllerRecord implements EventHandler<ActionEvent>
 				long timeDelta = timeCurrent - timeStart;
 				
 				final SoundRecorder recorder = new SoundRecorder(filePath);
+				recorder.start();
+				
+				while(timeDelta <= 2000)
+				{
+					int timeSeconds = (int) (timeDelta / 1000);
+					updateMessage(string + (2 - timeSeconds) + " ...");
+					
+					//pointing
+
+					timeCurrent = System.currentTimeMillis();
+					timeDelta = timeCurrent - timeStart;
+				}
+				
+				timeStart = System.currentTimeMillis();
+				timeCurrent = System.currentTimeMillis();
+				timeDelta = timeCurrent - timeStart;
+				
 				
 				while(timeDelta <= 3000)
 				{
 					int timeSeconds = (int) (timeDelta / 1000);
-					updateMessage(string + (3 - timeSeconds) + " ...");
-					
-					//pointing
-					if(timeDelta == 1000)
-						recorder.start();
+					updateMessage("Recording(" + (3 - timeSeconds) + ")...");
 
-					timeCurrent = System.currentTimeMillis();
+			        timeCurrent = System.currentTimeMillis();
 					timeDelta = timeCurrent - timeStart;
 				}
-				
-				while(timeDelta <= 6000)
-				{
-					int timeSeconds = (int) (timeDelta / 1000);
-					updateMessage("Recording(" + (6 - timeSeconds) + ")...");
-
-					timeCurrent = System.currentTimeMillis();
-					timeDelta = timeCurrent - timeStart;
-				}
-				updateMessage("");
 				recorder.finish();
 				NUMBER++;
+				updateMessage("");
 				return null;		
 			}	
 		};

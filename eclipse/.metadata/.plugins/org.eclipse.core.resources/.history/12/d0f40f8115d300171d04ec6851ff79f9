@@ -55,9 +55,15 @@ public class ControllerRecord implements EventHandler<ActionEvent>
 					timeCurrent = System.currentTimeMillis();
 					timeDelta = timeCurrent - timeStart;
 				}
-				updateMessage("");
+				while(timeDelta <= 8000)
+				{	
+			      timeCurrent = System.currentTimeMillis();
+				  timeDelta = timeCurrent - timeStart;
+				}
+				
 				recorder.finish();
 				NUMBER++;
+				updateMessage("");
 				return null;		
 			}	
 		};
