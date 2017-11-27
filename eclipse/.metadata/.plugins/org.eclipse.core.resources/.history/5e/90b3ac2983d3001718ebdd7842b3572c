@@ -19,8 +19,8 @@ public class SoundRecorder {
  
     public SoundRecorder(String filePath)
     {
-    	wavFile = new File("c:/RecordAudio.wav");
-    	//wavFile = new File(filePath);
+    	//wavFile = new File("c:/RecordAudio.wav");
+    	wavFile = new File(filePath);
     }
     
     /**
